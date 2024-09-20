@@ -1,0 +1,19 @@
+<p>users/index</p>
+
+<h1>User Info</h1>
+<p>name</p>
+ <p><%= current_user.name %></p>
+<p>introduction</p>
+  <p><%= current_user.introduction %></p>
+  <%= link_to "edit"  %>
+
+
+<%= render 'books/new', books: @books %>
+
+<% @users.each do |user| %>
+  <div>
+    <p>投稿ユーザー画像</p>
+    <p><%= user.name %></p>
+    <P><%= link_to "Show", user_path(user.id) %></P>
+  </div>
+<% end %>

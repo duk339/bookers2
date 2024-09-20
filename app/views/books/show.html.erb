@@ -1,7 +1,21 @@
+<P>books/show</P>
+
+<h1>User Info</h1>
+<p>name</p>
+ <p><%= @book.user.name %></p>
+<p>introduction</p>
+  <p><%= @book.user.introduction %></p>
+  <%= link_to "edit"  %>
+
+
+
+<%= render 'new', books: @books %>
+
 <div>
+  <h1>Book Detail</h1>
     <p>投稿ユーザー画像</p>
-     <p><%= @book.user.name %></p>
-    <p>Title：<%= @book.title %></p>
+     <p><%=link_to @book.user.name, user_path %></p>
+    <p>Title：<%= link_to @book.title, book_path %></p>
     <p>Opinion：<%= @book.body %></p>
     <% if @book.user == current_user %>
       <%= link_to "Edit", edit_book_path(@book), method: :edit %>

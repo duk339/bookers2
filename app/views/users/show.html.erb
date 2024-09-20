@@ -1,1 +1,21 @@
- <h3><%= @user.name %></h3>
+<p>users/show</p>
+<h1>User Info</h1>
+<p>name</p>
+ <p><%= @user.name %></p>
+<p>introduction</p>
+  <p><%= @user.introduction %></p>
+  <%= link_to "edit"  %>
+
+
+<%= render 'books/new', books: @books %>
+
+<h1>Books</h1>
+<% @user.books.each do |book| %>
+  <div>
+    <p>投稿ユーザー画像</p>
+    <%= link_to book_path(book.id) do %>
+      <p>Title：<%= book.title %></p>
+    <% end %>
+    <p>Opinion：<%= book.body %></p>
+  </div>
+<% end %>
