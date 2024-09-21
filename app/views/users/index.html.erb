@@ -1,11 +1,6 @@
 <p>users/index</p>
 
-<h1>User Info</h1>
-<p>name</p>
- <p><%= current_user.name %></p>
-<p>introduction</p>
-  <p><%= current_user.introduction %></p>
-  <%= link_to "edit"  %>
+<%= render 'users/info', user: current_user %>
 
 
 <%= render 'books/new', books: @books %>

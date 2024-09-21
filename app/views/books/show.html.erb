@@ -1,11 +1,6 @@
 <P>books/show</P>
 
-<h1>User Info</h1>
-<p>name</p>
- <p><%= @book.user.name %></p>
-<p>introduction</p>
-  <p><%= @book.user.introduction %></p>
-  <%= link_to "edit"  %>
+<%= render 'users/info', user: @user %>
 
 
 
