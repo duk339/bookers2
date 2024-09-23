@@ -1,17 +1,38 @@
-<p>index</p>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
+<div class="col-md-3">
 <%= render 'users/info', user: current_user %>
-
-
 <%= render 'new', books: @book %>
+</div>
+<div class="offset-md-1"></div>
+<div class="col-md-8">
+  <h2>Books</h2>
+<table class="table table-hover table-inverse">
+<tr>
+  <th></th>
+  <th>Title</th>
+  <th>Opinion</th>
+</tr>
 
 
 <% @books.each do |book| %>
-  <div>
-    <p>投稿ユーザー画像</p>
-    <%= link_to book_path(book.id) do %>
-      <p>Title：<%= book.title %></p>
-    <% end %>
-    <p>Opinion：<%= book.body %></p>
-  </div>
+  <tr>
+    <td><%= link_to user_path(book.user.id) do %>
+      <%= image_tag book.user.get_image(100,100) %>
+      <% end %></td>
+    <td>
+      <%= link_to book_path(book.id) do %>
+        <%= book.title %></td>
+      <% end %>
+    <td><%= book.body %></td>
+  </tr>
 <% end %>
+</table>
+</div>

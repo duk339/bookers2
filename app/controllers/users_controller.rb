@@ -18,14 +18,23 @@ class UsersController < ApplicationController
   def update
     is_matching_login_user
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path
+    if @user.update(user_params)
+      redirect_to user_path
+      flash[:notice] = "You have updated user successfully."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    reset_session
+    redirect_to root_path, notice: 'Signed out successfully.'
   end
 
      private
 
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction,:image)
   end
 
   def is_matching_login_user

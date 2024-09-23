@@ -1,7 +1,16 @@
-<h1>User Info</h1>
-<p>name</p>
- <p><%= user.name %></p>
-<p>introduction</p>
-  <p><%= user.introduction %></p>
+<h2>User Info</h2>
+<%= image_tag user.get_image(100,100) %>
+<table class="table">
+  <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+  </tr>
+</table>
 
-    <%= link_to "edit", edit_user_path(user), method: :edit  %>
+    <%= link_to  edit_user_path(user) do %>
+    <i class="fa-solid fa-user-gear"></i>
+    <% end %>

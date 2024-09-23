@@ -1,19 +1,20 @@
-<P>books/show</P>
-
+<div class="col-md-3">
 <%= render 'users/info', user: @user %>
-
-
-
 <%= render 'new', books: @books %>
+</div>
+<div class="offset-md-1"></div>
 
-<div>
-  <h1>Book Detail</h1>
-    <p>投稿ユーザー画像</p>
-     <p><%=link_to @book.user.name, user_path %></p>
-    <p>Title：<%= link_to @book.title, book_path %></p>
-    <p>Opinion：<%= @book.body %></p>
+<div class="col-md-8">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tr>
+    <td><%= link_to  user_path do %><%= image_tag @book.user.get_image(100,100) %><br><%= @book.user.name %><% end %></td>
+    <td><%= link_to @book.title, book_path %></td>
+    <td><%= @book.body %></td>
     <% if @book.user == current_user %>
-      <%= link_to "Edit", edit_book_path(@book), method: :edit %>
-      <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <td><%= link_to "Edit", edit_book_path(@book) %></td>
+      <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     <% end %>
+    </tr>
+    </table>
 </div>
